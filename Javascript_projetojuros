@@ -1,0 +1,44 @@
+//Programa para aplicação de juros em uma dívida
+import entradaDados from 'readline-sync';
+//Imprmir na tela sobre o que é o programa
+console.log("Aplicação de Juros: ");
+//Declarar variáveis e input de dados
+let valorj;
+
+let valord = entradaDados.question("\nInforme o valor devido: R$ ");
+//Estrutura condicional
+if(valord > 0)
+{
+    let diasvencimento = entradaDados.question("Informe quantos dias se passaram desde o vencimento do boleto: ");
+
+    if(diasvencimento > 0)
+    {
+        if(diasvencimento > 15)
+        {
+            valorj = 10;
+        }
+        else
+        {
+            valorj = 5;
+        }
+
+        valord = Number(valord);
+        diasvencimento = Number(diasvencimento);
+
+        let total_juros = (valord / 100) * valorj;
+        let valor_t = valord + total_juros;
+//Imprimir na tela valores finais
+        console.log("\nValor original da dívida: R$ "+valord);
+        console.log("Dias atrasados: "+diasvencimento);
+        console.log("Taxa de Juros: "+valorj+"%");
+        console.log("Valor total com juros: R$ "+valor_t);
+    }
+    else
+    {
+        console.log("Você está em dia!");
+    }
+}
+else
+{
+    console.log("O valor da dívida deve ser maior que zero!")
+}
